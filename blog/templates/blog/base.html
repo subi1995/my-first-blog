@@ -1,20 +1,25 @@
 {% load staticfiles %}
 <html>
     <head>
+    	<!-- 여기 부트스트랩 테스트 코딩 디바이스 크기에 따라 하는거.-->
+    	<meta name="viewport" content="width=device-width, initial-scale=1">
+    	 
         <title>SUBIN'S BLOG</title>
+        <!--밑ㅊ에줄을 글 추가하려는 플러스 디자인~~-->
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+        <!---->
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
         <link href='//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
         <link rel="stylesheet" href="{% static 'css/blog.css' %}">
     </head>
     <body>
+    	<!-- 여기 부트스트랩 테스트 코딩 디바이스 크기에 따라 하는거.-->    	
         <div class="page-header">
         	{% if user.is_authenticated %}
         		<a href="{% url 'post_new' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a>
         	
         	{% endif %}
-            <a href="{% url 'post_new' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a>
-            <h1><a href="/">SUBIN'S BLOG</a></h1>
+                     <h1><a href="/"> SUBIN'S BLOG</a></h1>
         </div>
         <div class="content container">
             <div class="row">
