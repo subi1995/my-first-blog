@@ -1,13 +1,68 @@
 {% extends 'blog/base.html' %}
-
+{% load staticfiles %}
 {% block content %}
-    {% for post in posts %}
-        <div class="post">
-            <div class="date">
-                {{ post.published_date }}
-            </div>
-            <h1><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h1>
-            <p>{{ post.text|linebreaksbr }}</p>
-        </div>
-    {% endfor %}
+ <link rel="stylesheet" href="{% static 'css/style2.css' %}">
+
+
+        <!-- 메뉴바 밑에 사진 -->  
+<div class ="deco">
+    <div class="deco_img">       
+        <a href="/"><img src="{% static 'img/post_list.jpg' %}"  style=" width: 100%; " /></a>
+    </div>
+</div>
+ <article class="page">
+
+		<div class="content">
+			<!--사이드 영역-->
+			<div class="side_content">
+				<br>
+				<br>
+				<div class="side_content_name">커뮤니티</div>
+				<div class="side_content_unit">
+					<div>공지사항</div>
+					<div>회의실 소개</div>
+					<div>검 색</div>
+				</div>
+			</div>
+			<!--메인 영역-->
+			<div class="main_content">
+				<br>
+				<br>
+				<div class="main_content_name">공지사항</div>
+				<div class="main_content_unit">
+					<table class="content_table" style="width: 90% ">
+						<colgroup>
+							<col class="num" width="10%">
+							<col class="subject" width="60%">
+							<col class="writer" width="10%">
+							<col class="date" width="20%">
+
+						</colgroup>
+						<thead>
+							<tr class="content_table_menu">
+								<th>번호</th>
+								<th>제목</th>
+								<th>작성자</th>
+								<th>작성일자</th>
+								
+							</tr>
+							{% for post in posts %}
+							<tr>
+								<th class="table_text">{{ post.pk }}</th>
+								<th class="table_text"><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></th>
+								<th class="table_text">{{ post.author }}</th>
+								<th class="table_text_date">{{post.published_date|date:"Y-m-d"}}</th>
+								
+							</tr>
+							{% endfor %}
+						</thead>
+					</table>
+				</div>
+
+				<a href="/post/new/" class="top-menu"><span><button type="submit" ><h1> 글 추가하기 </h1> </button></span></a>
+
+			</div>
+		</div>
+	</article>
+
 {% endblock %}

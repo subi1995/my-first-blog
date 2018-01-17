@@ -4,9 +4,17 @@ from django.shortcuts import redirect
 from django.utils import timezone
 from .models import Post
 from .forms import PostForm
+
 ## 여기는 bootstrap 연결 test 
 from django.http import HttpResponse
 from django.template import loader
+
+def home(request):
+    return render(request, 'blog/home.html')
+
+def photo(request):
+    return render(request, 'blog/photo.html')
+
 
 def post_list(request):
     posts = Post.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
@@ -43,7 +51,7 @@ def post_edit(request, pk):
             post.save()
             return redirect('post_detail', pk=post.pk)
     else:
-        form = PostForm(instance=post)
+        form = PostForm(request.POST, instance=post)
     return render(request, 'blog/post_edit.html', {'form': form})
 
 ## 여기는 bootstrap 연결 test

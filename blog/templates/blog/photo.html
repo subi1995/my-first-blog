@@ -1,0 +1,67 @@
+{% extends 'blog/base.html' %}
+{% load staticfiles %}
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/detail_style.css' %}">
+
+
+
+<div class ="deco">
+    <div class="deco_img">       
+        <a href="/"><img src="{% static 'img/post_list.jpg' %}"  style=" width: 100%; " /></a>
+    </div>
+</div>
+
+ <article class="page">
+
+        <div class="content">
+            <!--사이드 영역-->
+            <div class="side_content">
+                <br>
+                <br>
+                <div class="side_content_name">커뮤니티</div>
+                <div class="side_content_unit">
+                    <div>공지사항</div>
+                    <div>회의실 소개</div>
+                    <div>검 색</div>
+                </div>
+            </div>
+            <!--메인 영역-->
+            <div class="main_content">
+                <br>
+                <br>
+                <fieldset>
+                <div class="main_content_name"><legend><h1>"세미나실 1"</h1></legend></div>
+                    <div class="photo_content">
+                        <div class="photo">
+                            <img src="{% static 'img/KakaoTalk_20180116_234444732.jpg' %}"  style=" width: 100%; " />
+                        </div>
+                        <div class="photo">
+                            <img src="{% static 'img/KakaoTalk_20180116_234444132.jpg' %}"  style=" width: 100%; " />
+                        </div>
+                        <div class="photo">
+                            <img src="{% static 'img/KakaoTalk_20180116_234437278.jpg' %}"  style=" width: 100%; " />
+                        </div>
+                    </div>
+                </fieldset>
+                <div class="line"></div>
+
+                <fieldset>
+                <div class="main_content_name"><legend><h1>"세미나실 2"</h1></legend></div>
+                    <div class="photo_content">
+                        <div class="photo">
+                            <img src="{% static 'img/KakaoTalk_20180116_234436505.jpg' %}"  style=" width: 100%; " />
+                        </div>
+                        <div class="photo">
+                            <img src="{% static 'img/KakaoTalk_20180116_234440606.jpg' %}"  style=" width: 100%; " />
+                        </div>
+                        <div class="photo">
+                            <img src="{% static 'img/KakaoTalk_20180116_234438676.jpg' %}"  style=" width: 100%; " />
+                        </div>
+                    </div>
+                </fieldset>
+                <hr>
+                </div>
+
+    </article>
+
+{% endblock %}

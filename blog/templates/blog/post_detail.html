@@ -1,16 +1,58 @@
 {% extends 'blog/base.html' %}
-
+{% load staticfiles %}
 {% block content %}
-        <div class="post">
-           {% if post.published_date %}
-           <div class="date">
-           	{{post.published_date}}
-           </div>
-           {% endif %}
-           {% if user.is_authenticated %}
-           <a class="btn btn-default" href="{% url 'post_edit' pk=post.pk %}"><span class="glyphicon glyphicon-pencil"></span></a>
-           {% endif%}
-           <h1>{{post.title}}</h1>
-           <p>{{post.text|linebreaksbr}}</p>
+<link rel="stylesheet" href="{% static 'css/detail_style.css' %}">
+<div class ="deco">
+    <div class="deco_img">       
+        <a href="/"><img src="{% static 'img/post_list.jpg' %}"  style=" width: 100%; " /></a>
+    </div>
+</div>
+
+ <article class="page">
+
+        <div class="content">
+            <!--사이드 영역-->
+            <div class="side_content">
+                <br>
+                <br>
+                <div class="side_content_name">커뮤니티</div>
+                <div class="side_content_unit">
+                    <div>공지사항</div>
+                    <div>회의실 소개</div>
+                    <div>검 색</div>
+                </div>
+            </div>
+            <!--메인 영역-->
+            <div class="main_content">
+                <br>
+                <br>
+                <div class="main_content_name">공지사항</div>
+                <div class="main_content_unit">
+                    <div class="unit_line" style=" justify-content: center;">
+                            <h1>{{ post.title }}</h1>
+                    </div>
+                    {% if post.published_date %}
+                    <div class="unit_line_impormation">
+                        <div s>작성자 : {{post.author}}</div><div>작성일자 :  {{ post.published_date|date:"Y-m-d"}}</div>
+                    </div>
+                    {% endif %}
+                    <div class="unit_line">
+                        첨부파일
+                    </div> 
+                    <div class="unit_line_post">
+                        {{ post.text|linebreaksbr }}
+                    </div>
+
+                </div>
+
+                <br/>
+                <div>
+                    {% load disqus_tags%}
+                    {% disqus_show_comments%}
+                </div>
+                </div>
+
+    </article>
+
         </div>
 {% endblock %}

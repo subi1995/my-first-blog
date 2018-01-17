@@ -1,9 +1,44 @@
 {% extends 'blog/base.html' %}
-
+{% load staticfiles %}
 {% block content %}
-    <h1>New post</h1>
-    <form method="POST" class="post-form">{% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit" class="save btn btn-default">Save</button>
-    </form>
+<link rel="stylesheet" href="{% static 'css/detail_style.css' %}">
+
+
+
+<div class ="deco">
+    <div class="deco_img">       
+        <a href="/"><img src="{% static 'img/post_list.jpg' %}"  style=" width: 100%; " /></a>
+    </div>
+</div>
+
+ <article class="page">
+
+        <div class="content">
+            <!--사이드 영역-->
+            <div class="side_content">
+                <br>
+                <br>
+                <div class="side_content_name">커뮤니티</div>
+                <div class="side_content_unit">
+                    <div>공지사항</div>
+                    <div>회의실 소개</div>
+                    <div>검 색</div>
+                </div>
+            </div>
+            <!--메인 영역-->
+            <div class="main_content">
+                <br>
+                <br>
+                <div class="main_content_name"><h1>New post</h1></div>
+                <div class="add_post">
+    				
+   					<form method="POST" class="post-form">{% csrf_token %}
+       					{{ form.as_p }}
+        				<button type="submit" class="save btn btn-default">Save</button>
+    				</form>
+                </div>
+                </div>
+
+    </article>
+
 {% endblock %}
